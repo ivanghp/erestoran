@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace sedc.Erestaurant.Data.Model
 {
-    public enum OrderStatus
+    public enum OrderStatus //nepotrebno
     {
         Created,
         InProgress,

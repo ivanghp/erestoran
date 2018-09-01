@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace sedc.Erestaurant.Data.Model
 {
-    public enum MenuType
+    public enum MenuType //nepotrebno
     {
         Meals,
         Drinks,
