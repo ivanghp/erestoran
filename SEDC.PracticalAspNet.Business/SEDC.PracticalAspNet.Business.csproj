@@ -48,12 +48,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\DtoCategory.cs" />
+    <Compile Include="Model\DtoItem.cs" />
     <Compile Include="Model\DtoMenu.cs" />
     <Compile Include="Model\MenuType.cs" />
     <Compile Include="Model\OrderStatus.cs" />
     <Compile Include="Service\BaseService.cs" />
     <Compile Include="Service\CategoryService.cs" />
     <Compile Include="Service\IService.cs" />
+    <Compile Include="Service\ItemService.cs" />
     <Compile Include="Service\MenuService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\ServiceResult.cs" />
