@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace sedc.Erestaurant.Data.Model
 {
-    public enum OrderStatus //nepotrebno
+    public enum OrderStatus
     {
-        Created,
-        InProgress,
-        Prepared,
-        Delivered
+        Undefined = 0,
+        Created = 1,
+        InProgress = 2,
+        Prepared = 3,
+        Delivered = 4
     }
 }

@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sedc.Erestaurant.Data.Model
+namespace sedc.Erestaurant.Business
 {
-    public enum MenuType //nepotrebno
+    public class Class1
     {
-        Meals,
-        Drinks,
-        Wines
     }
 }

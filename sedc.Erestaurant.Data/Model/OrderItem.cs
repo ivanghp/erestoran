@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace sedc.Erestaurant.Data.Model
 {
-    class OrderItem
+    public class OrderItem
     {
         [Key]
         public int OrderItemId { get; set; }

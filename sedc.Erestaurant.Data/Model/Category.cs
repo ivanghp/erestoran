@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace sedc.Erestaurant.Data.Model
 {
-    class Category
+    public class Category
     {
         [Key]
         public int Id { get; set; }
