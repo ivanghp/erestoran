@@ -7,7 +7,7 @@ using sedc.Erestaurant.Data.Model;
 
 namespace sedc.Erestaurant.Business.Model
 {
-    class DtoMenu
+    public class DtoMenu
     {
         public DtoMenu()
         {

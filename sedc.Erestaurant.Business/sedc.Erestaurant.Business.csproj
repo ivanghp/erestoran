@@ -47,6 +47,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\BaseService.cs" />
     <Compile Include="Service\IService.cs" />
+    <Compile Include="Service\MenuService.cs" />
     <Compile Include="Service\ServiceResult.cs" />
   </ItemGroup>
   <ItemGroup>
