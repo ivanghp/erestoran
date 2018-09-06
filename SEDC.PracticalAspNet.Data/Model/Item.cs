@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SEDC.PracticalAspNet.Data.Model
 {
@@ -24,8 +25,9 @@ namespace SEDC.PracticalAspNet.Data.Model
         public bool Availability { get; set; }
 
         [Required]
+        [ForeignKey("Category")]
         public int CategoryId { get; set; }
 
-        public Category Category { get; set; }
+        public virtual Category Category { get; set; }
     }
 }

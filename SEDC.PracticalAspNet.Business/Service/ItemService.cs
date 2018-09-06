@@ -25,7 +25,11 @@ namespace SEDC.PracticalAspNet.Business.Service
             {
                 Id = 0,
                 Name = item.Name,
-                CategoryId = item.CategoryId
+                CategoryId = item.CategoryId,
+                Description = item.Description,
+                Contents = item.Contents,
+                Price = item.Price,
+                Availability = item.Availability
             };
             var result = Repository.Create(newItem);
             return new ServiceResult<DtoItem>()

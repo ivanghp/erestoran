@@ -11,8 +11,10 @@ namespace SEDC.PracticalAspNet.Data.Repository
     {
         public Item Create(Item item)
         {
+            item.Id = default(int);
+            item.Name = item.Name.Trim();
             DbContext.Items.Add(item);
-            DbContext.SaveChanges();
+            int rowsAffected = DbContext.SaveChanges();
             return item;
         }
 
@@ -41,6 +43,10 @@ namespace SEDC.PracticalAspNet.Data.Repository
                 i.Id == item.Id);
             dbItem.Name = item.Name;
             dbItem.CategoryId = item.CategoryId;
+            dbItem.Availability = item.Availability;
+            dbItem.Category = item.Category;
+            dbItem.Contents = item.Contents;
+            dbItem.Description = item.Description;
             DbContext.Entry<Item>(dbItem).State =
                 System.Data.Entity.EntityState.Modified;
             DbContext.SaveChanges();

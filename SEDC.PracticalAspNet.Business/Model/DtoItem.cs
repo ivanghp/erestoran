@@ -19,6 +19,10 @@ namespace SEDC.PracticalAspNet.Business.Model
             Id = item.Id;
             Name = item.Name;
             CategoryId = item.CategoryId;
+            Description = item.Description;
+            Contents = item.Contents;
+            Price = item.Price;
+            Availability = item.Availability;
         }
 
         public int Id { get; set; }
