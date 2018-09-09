@@ -18,22 +18,33 @@ namespace SEDC.PracticalAspNet.Data.Repository
 
         public void Delete(Category item)
         {
-            throw new NotImplementedException();
+            var dbItem = DbContext.Categories.Single(c =>
+                c.Id == item.Id);
+            DbContext.Categories.Remove(dbItem);
+            DbContext.SaveChanges();
         }
 
         public Category Get(int id)
         {
-            throw new NotImplementedException();
+            return DbContext.Categories.SingleOrDefault(c => c.Id == id);
         }
 
         public IList<Category> GetAll()
         {
-            throw new NotImplementedException();
+            return DbContext.Categories.ToList();
         }
 
         public void Update(Category item)
         {
-            throw new NotImplementedException();
+            var dbItem = DbContext.Categories.Single(c => c.Id == item.Id);
+            dbItem.Id = item.Id;
+            dbItem.ListItems = item.ListItems;
+            dbItem.Menu = item.Menu;
+            dbItem.MenuId = item.MenuId;
+            dbItem.Name = item.Name;
+            DbContext.Entry<Category>(dbItem).State = System.Data.Entity.EntityState.Modified;
+            DbContext.SaveChanges();
+
         }
     }
 }

@@ -36,22 +36,96 @@ namespace SEDC.PracticalAspNet.Business.Service
 
         public ServiceResult<DtoCategory> Edit(DtoCategory item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var editItem = Repository.DbContext.Categories.Single(i => i.Id == item.Id);
+                Repository.Update(editItem);
+                //DbContext.SaveChanges();
+                return new ServiceResult<DtoCategory>
+                {
+                    Item = item,
+                    Success = true
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResult<DtoCategory>
+                {
+                    Success = false,
+                    Exception = ex,
+                    ErrorMessage = ex.Message
+                };
+            }
         }
 
         public ServiceResult<DtoCategory> Load(DtoCategory item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return new ServiceResult<DtoCategory>
+                {
+                    Item = item,
+                    Success = true
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResult<DtoCategory>
+                {
+                    Success = false,
+                    Exception = ex,
+                    ErrorMessage = ex.Message
+                };
+            }
         }
 
         public ServiceResult<DtoCategory> LoadAll()
         {
-            throw new NotImplementedException();
+            try
+            {
+                var categories = Repository.GetAll().ToList();
+                var resultList = new List<DtoCategory>();
+                categories.ForEach(c => resultList.Add(new DtoCategory(c)));
+                return new ServiceResult<DtoCategory>
+                {
+                    ListItems = resultList,
+                    Success = true
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResult<DtoCategory>
+                {
+                    Success = false,
+                    Exception = ex,
+                    ErrorMessage = ex.Message
+                };
+            }
         }
 
         public ServiceResult<DtoCategory> Remove(DtoCategory item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var delItem = Repository.DbContext.Categories.Single(i => i.Id == item.Id);
+                Repository.Delete(delItem);
+                //DbContext.SaveChanges(); 
+                var categoryList = new List<DtoCategory>();
+                return new ServiceResult<DtoCategory>
+                {
+                    ListItems = categoryList,
+                    Success = true
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResult<DtoCategory>
+                {
+                    Success = false,
+                    Exception = ex,
+                    ErrorMessage = ex.Message
+                };
+            }
         }
     }
 }

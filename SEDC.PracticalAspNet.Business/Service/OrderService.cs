@@ -56,12 +56,47 @@ namespace SEDC.PracticalAspNet.Business.Service
 
         public ServiceResult<DtoOrder> Edit(DtoOrder item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var editItem = Repository.DbContext.Orders.Single(i => i.Id == item.Id);
+                Repository.Update(editItem);
+                //DbContext.SaveChanges();
+                return new ServiceResult<DtoOrder>
+                {
+                    Item = item,
+                    Success = true
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResult<DtoOrder>
+                {
+                    Success = false,
+                    Exception = ex,
+                    ErrorMessage = ex.Message
+                };
+            }
         }
 
         public ServiceResult<DtoOrder> Load(DtoOrder item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return new ServiceResult<DtoOrder>
+                {
+                    Item = item,
+                    Success = true
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResult<DtoOrder>
+                {
+                    Success = false,
+                    Exception = ex,
+                    ErrorMessage = ex.Message
+                };
+            }
         }
 
         public ServiceResult<DtoOrder> LoadAll()
@@ -91,7 +126,27 @@ namespace SEDC.PracticalAspNet.Business.Service
 
         public ServiceResult<DtoOrder> Remove(DtoOrder item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var delItem = Repository.DbContext.Orders.Single(i => i.Id == item.Id);
+                Repository.Delete(delItem);
+                //DbContext.SaveChanges();
+                var categoryList = new List<DtoOrder>();
+                return new ServiceResult<DtoOrder>
+                {
+                    ListItems = categoryList,
+                    Success = true
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResult<DtoOrder>
+                {
+                    Success = false,
+                    Exception = ex,
+                    ErrorMessage = ex.Message
+                };
+            }
         }
     }
 }

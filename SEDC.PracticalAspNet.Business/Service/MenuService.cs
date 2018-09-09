@@ -39,12 +39,47 @@ namespace SEDC.PracticalAspNet.Business.Service
 
         public ServiceResult<DtoMenu> Edit(DtoMenu item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var editItem = Repository.DbContext.Menus.Single(i => i.Id == item.Id);
+                Repository.Update(editItem);
+                //DbContext.SaveChanges();
+                return new ServiceResult<DtoMenu>
+                {
+                    Item = item,
+                    Success = true
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResult<DtoMenu>
+                {
+                    Success = false,
+                    Exception = ex,
+                    ErrorMessage = ex.Message
+                };
+            }
         }
 
         public ServiceResult<DtoMenu> Load(DtoMenu item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return new ServiceResult<DtoMenu>
+                {
+                    Item = item,
+                    Success = true
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResult<DtoMenu>
+                {
+                    Success = false,
+                    Exception = ex,
+                    ErrorMessage = ex.Message
+                };
+            }
         }
 
         public ServiceResult<DtoMenu> LoadAll()
@@ -74,7 +109,28 @@ namespace SEDC.PracticalAspNet.Business.Service
 
         public ServiceResult<DtoMenu> Remove(DtoMenu item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var delItem = Repository.DbContext.Menus.Single(i => i.Id == item.Id);
+                //DbContext.Menus.Remove(delItem);
+                Repository.Delete(delItem);
+                DbContext.SaveChanges(); // da ne se prevzema ulogata na MenuRepository?
+                var menuList = new List<DtoMenu>();
+                return new ServiceResult<DtoMenu>
+                {
+                    ListItems = menuList,
+                    Success = true
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResult<DtoMenu>
+                {
+                    Success = false,
+                    Exception = ex,
+                    ErrorMessage = ex.Message
+                };
+            }
         }
     }
 }

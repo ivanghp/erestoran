@@ -11,32 +11,41 @@ namespace SEDC.PracticalAspNet.Data.Repository
     {
         public Order Create(Order item)
         {
-            throw new NotImplementedException();
-            //item.Id = default(int);
-            //item. = item.Name.Trim();
-            //DbContext.Items.Add(item);
-            //int rowsAffected = DbContext.SaveChanges();
-            //return item;
+            
+            item.Id = default(int);
+            item.Table = item.Table.Trim();
+            DbContext.Orders.Add(item);
+            int rowsaffected = DbContext.SaveChanges();
+            return item;
         }
 
         public void Delete(Order item)
         {
-            throw new NotImplementedException();
+            var dbOrder = DbContext.Orders.Single(o =>
+                o.Id == item.Id);
+            DbContext.Orders.Remove(dbOrder);
+            DbContext.SaveChanges();
         }
 
         public Order Get(int id)
         {
-            throw new NotImplementedException();
+            return DbContext.Orders.SingleOrDefault(o => o.Id == id);
         }
 
         public IList<Order> GetAll()
         {
-            throw new NotImplementedException();
+            return DbContext.Orders.ToList();
         }
 
         public void Update(Order item)
         {
-            throw new NotImplementedException();
+            var dbOrder = DbContext.Orders.Single(o => o.Id == item.Id);
+            dbOrder.Table = item.Table;
+            dbOrder.StatusId = item.StatusId;
+            dbOrder.WhenCreated = item.WhenCreated;
+            dbOrder.ListOrderItems = item.ListOrderItems;
+            DbContext.Entry<Order>(dbOrder).State = System.Data.Entity.EntityState.Modified;
+            DbContext.SaveChanges();
         }
     }
 }
