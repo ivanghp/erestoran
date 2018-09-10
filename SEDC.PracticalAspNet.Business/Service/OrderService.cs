@@ -49,7 +49,6 @@ namespace SEDC.PracticalAspNet.Business.Service
                         Exception = ex,
                         ErrorMessage = "an exception occured"
                     };
-
                 }
             }
         }
