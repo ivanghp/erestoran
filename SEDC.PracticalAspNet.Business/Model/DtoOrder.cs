@@ -1,6 +1,7 @@
 ﻿using SEDC.PracticalAspNet.Data.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +33,8 @@ namespace SEDC.PracticalAspNet.Business.Model
 
     public class DtoOrderItem
     {
+        [Key]
+        public int Id { get; set; }
         public int OrderId { get; set; }
         public int ItemId { get; set; }
         public short Quantity { get; set; }

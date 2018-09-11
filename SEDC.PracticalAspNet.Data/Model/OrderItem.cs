@@ -10,7 +10,7 @@ namespace SEDC.PracticalAspNet.Data.Model
     public class OrderItem
     {
         [Key]
-        public int OrderItemId { get; set; }
+        public int Id { get; set; }
 
         public int OrderId { get; set; }
 
