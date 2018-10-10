@@ -63,12 +63,27 @@ namespace SEDC.PracticalAspNet.Business.Service
 
         public ServiceResult<DtoMenu> Load(DtoMenu item)
         {
-            try
+            if ((item?.Id ?? 0) < 1)
             {
                 return new ServiceResult<DtoMenu>
                 {
-                    Item = item,
-                    Success = true
+                    Success = false,
+                    ErrorMessage = "Id is a required parameter"
+                };
+            }
+            try
+            {
+                var dbItem = Repository.Get(item.Id);
+                if (dbItem == null)
+                    return new ServiceResult<DtoMenu>
+                    {
+                        Success = false,
+                        ErrorMessage = "Menu not found"
+                    };
+                return new ServiceResult<DtoMenu>
+                {
+                    Success = true,
+                    Item = new DtoMenu(dbItem)
                 };
             }
             catch (Exception ex)

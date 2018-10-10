@@ -12,7 +12,7 @@ namespace SEDC.PracticalAspNet.Data
     public class RestaurantContext : DbContext
     {
         public RestaurantContext()
-            : base ("name=RestaurantConnection")
+            : base ("name=RestaurantConnection") // "DefaultConnection", throwIfV1Schema: false
         {
 
         }
@@ -26,5 +26,10 @@ namespace SEDC.PracticalAspNet.Data
         public DbSet<Order> Orders { get; set; }
 
         public DbSet<OrderItem> OrderItems { get; set; }
+
+        public static RestaurantContext Create()
+        {
+            return new RestaurantContext();
+        }
     }
 }
